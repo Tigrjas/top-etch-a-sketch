@@ -20,7 +20,6 @@ function createGrid(size = DEFAULT_GRID_SIZE) {
 
             square.addEventListener("mouseover", () => {
                 let currentOpacity = parseFloat(square.style.opacity);
-                console.log(currentOpacity);
                 if (currentOpacity < 1) {
                     square.style.opacity = (currentOpacity + 0.1);
                 }

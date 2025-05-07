@@ -1,0 +1,28 @@
+const NUM_SQUARES = 16;
+
+function createGrid(size) {
+    const container = document.querySelector(".container");
+    container.innerHTML = '';
+
+    const squareSize = 960 / size;
+
+    function createRow(size) {
+        for (let i = 0; i < NUM_SQUARES; i++) {
+            const square = document.createElement("div")
+            square.classList.add("square");
+            square.style.width = `${squareSize}px`;
+            square.style.height = `${squareSize}px`;
+            square.style.boxSizing = 'border-box';
+            square.style.border = '1px solid #ccc';
+    
+            container.append(square);
+        }
+    }
+
+    for (let i = 0; i < NUM_SQUARES; i++) {
+        createRow(size)
+    }
+    
+}
+
+createGrid(NUM_SQUARES);

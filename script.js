@@ -1,7 +1,7 @@
 const DEFAULT_GRID_SIZE = 16;
 const COLORS = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 
-function createGrid(size=DEFAULT_GRID_SIZE) {
+function createGrid(size = DEFAULT_GRID_SIZE) {
     const container = document.querySelector(".container");
     container.innerHTML = '';
 
@@ -15,12 +15,18 @@ function createGrid(size=DEFAULT_GRID_SIZE) {
             square.style.height = `${squareSize}px`;
             square.style.boxSizing = 'border-box';
             square.style.border = '1px solid #ccc';
+            square.style['background-color'] = randomChoice(COLORS);
+            square.style['opacity'] = 0;
 
             square.addEventListener("mouseover", () => {
-                square.style['background-color'] = randomChoice(COLORS);
-            })
-            
-    
+                let currentOpacity = parseFloat(square.style.opacity);
+                console.log(currentOpacity);
+                if (currentOpacity < 1) {
+                    square.style.opacity = (currentOpacity + 0.1);
+                }
+            });
+
+
             container.append(square);
         }
     }
@@ -41,7 +47,7 @@ function handleNewGridClick() {
 function randomChoice(array) {
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex];
-} 
+}
 
 const newGridButton = document.querySelector("#new-grid-button");
 newGridButton.addEventListener('click', handleNewGridClick)

@@ -1,6 +1,6 @@
-const NUM_SQUARES = 16;
+const DEFAULT_GRID_SIZE = 16;
 
-function createGrid(size) {
+function createGrid(size=DEFAULT_GRID_SIZE) {
     const container = document.querySelector(".container");
     container.innerHTML = '';
 
@@ -18,20 +18,22 @@ function createGrid(size) {
             container.append(square);
         }
     }
-
     for (let i = 0; i < size; i++) {
         createRow(size)
     }
-    
 }
 
 function handleNewGridClick() {
     const size = prompt("Number of squares per side of grid: ")
-    createGrid(size);
+    if (size > 100) {
+        alert("Sizes less than or equal to 100 only.")
+    } else {
+        createGrid(size);
+    }
 }
 
 const newGridButton = document.querySelector("#new-grid-button");
 newGridButton.addEventListener('click', handleNewGridClick)
 
 
-createGrid(NUM_SQUARES);
+createGrid();

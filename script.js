@@ -1,4 +1,5 @@
 const DEFAULT_GRID_SIZE = 16;
+const COLORS = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 
 function createGrid(size=DEFAULT_GRID_SIZE) {
     const container = document.querySelector(".container");
@@ -14,6 +15,11 @@ function createGrid(size=DEFAULT_GRID_SIZE) {
             square.style.height = `${squareSize}px`;
             square.style.boxSizing = 'border-box';
             square.style.border = '1px solid #ccc';
+
+            square.addEventListener("mouseover", () => {
+                square.style['background-color'] = randomChoice(COLORS);
+            })
+            
     
             container.append(square);
         }
@@ -31,6 +37,11 @@ function handleNewGridClick() {
         createGrid(size);
     }
 }
+
+function randomChoice(array) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+} 
 
 const newGridButton = document.querySelector("#new-grid-button");
 newGridButton.addEventListener('click', handleNewGridClick)

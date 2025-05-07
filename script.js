@@ -25,4 +25,13 @@ function createGrid(size) {
     
 }
 
+function handleNewGridClick() {
+    const size = prompt("Number of squares per side of grid: ")
+    createGrid(size);
+}
+
+const newGridButton = document.querySelector("#new-grid-button");
+newGridButton.addEventListener('click', handleNewGridClick)
+
+
 createGrid(NUM_SQUARES);
